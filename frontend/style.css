@@ -244,3 +244,15 @@ button.copy-btn {
     padding: 18px;
   }
 }
+
+.footer {
+  text-align: center;
+  padding: 22px 12px 34px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.footer span {
+  color: var(--accent);
+  font-weight: 800;
+}
