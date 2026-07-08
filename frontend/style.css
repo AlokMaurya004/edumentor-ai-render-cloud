@@ -1,0 +1,246 @@
+:root {
+  --bg: #0f172a;
+  --card: rgba(255, 255, 255, 0.09);
+  --card-strong: rgba(255, 255, 255, 0.14);
+  --text: #f8fafc;
+  --muted: #cbd5e1;
+  --line: rgba(255, 255, 255, 0.16);
+  --accent: #38bdf8;
+  --accent-strong: #0ea5e9;
+  --success: #86efac;
+  --danger: #fca5a5;
+  --shadow: 0 24px 70px rgba(0, 0, 0, 0.36);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(56, 189, 248, 0.28), transparent 32rem),
+    radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.24), transparent 28rem),
+    var(--bg);
+  color: var(--text);
+}
+
+.page-shell {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 48px 0;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.badge {
+  display: inline-flex;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(42px, 8vw, 82px);
+  letter-spacing: -0.08em;
+  line-height: 0.95;
+}
+
+.hero p {
+  width: min(720px, 100%);
+  margin: 18px auto 0;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.app-card,
+.output-card {
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: linear-gradient(135deg, var(--card), rgba(255, 255, 255, 0.04));
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.app-card {
+  padding: 24px;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+label {
+  font-weight: 700;
+  color: #e2e8f0;
+}
+
+textarea,
+select {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 14px 16px;
+  background: rgba(15, 23, 42, 0.7);
+  color: var(--text);
+  font: inherit;
+  outline: none;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+textarea:focus,
+select:focus {
+  border-color: var(--accent);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 13px 20px;
+  color: white;
+  font-weight: 800;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+button.secondary {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+button.ghost,
+button.copy-btn {
+  background: transparent;
+  border: 1px solid var(--line);
+}
+
+.output-card {
+  margin-top: 24px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.output-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 24px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.output-header h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.output-header p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+#output {
+  margin: 0;
+  min-height: 320px;
+  padding: 24px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+  font-size: 15px;
+  line-height: 1.75;
+  color: #e5e7eb;
+}
+
+.status-working {
+  color: var(--accent) !important;
+}
+
+.status-done {
+  color: var(--success) !important;
+}
+
+.status-error {
+  color: var(--danger) !important;
+}
+
+@media (max-width: 760px) {
+  .page-shell {
+    width: min(100% - 20px, 1120px);
+    padding: 28px 0;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .app-card {
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .output-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .copy-btn {
+    width: 100%;
+  }
+
+  .actions button {
+    width: 100%;
+  }
+
+  #output {
+    font-size: 14px;
+    padding: 18px;
+  }
+}

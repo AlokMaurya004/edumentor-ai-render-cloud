@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: edumentor-ai
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: APP_NAME
+        value: EduMentor AI
+      - key: OPENAI_MODEL
+        value: gpt-4o-mini
+      - key: DEMO_MODE
+        value: false
+      - key: OPENAI_API_KEY
+        sync: false
